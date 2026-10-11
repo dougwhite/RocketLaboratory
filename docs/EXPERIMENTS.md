@@ -55,4 +55,4 @@ Use a complete experiment object in each case; see `examples/repeatability-campa
 
 NNI2 binary stream and NNIT1 dense input tapes remain compatible with the original MIT instrument. Internal `noodle.instrument.*` schema identifiers and SDK command names are retained for compatibility. Public experiment/job/report schemas use `rocketlaboratory.*`. No game project is imported or needed.
 
-`rocketlab compile case.json tape.txt --bindings '{"0":7}'` requires explicit known actor bindings. Normally the runner discovers bindings and compiles automatically. Scientific exports preserve raw tuples without interpolation. The browser receives at most 1200 preview records; preview decimation is not a resampling method for acceptance tests.
+`rocketlab compile case.json tape.txt --bindings '{"0":7}'` requires explicit known actor bindings. Normally the runner discovers bindings and compiles automatically. Scientific exports preserve raw tuples without interpolation. The browser receives at most 1200 preview records with only chart fields and record clocks; full tuples remain in the raw capture. Preview decimation is not a resampling method for acceptance tests.

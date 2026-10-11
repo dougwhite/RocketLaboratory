@@ -1,8 +1,247 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RocketLaboratory · Experiment console</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head><body>
-<header><a class="brand" href="/" aria-label="RocketLaboratory home"><span class="mark">R<span>ₗ</span></span><span>Rocket<span class="brand-light">Laboratory</span><small>OFFLINE PHYSICS INVESTIGATION</small></span></a><div class="header-state"><span class="dot"></span><span id="instrument">Connecting</span><span class="version">v0.1</span></div></header>
-<main><aside class="sidebar"><div class="eyebrow">WORKSPACE / 01</div><h1>Experiment console</h1><p class="muted">Isolate an input. Observe the response. Keep the evidence.</p><div class="nav-heading">STARTER EXPERIMENTS</div><nav id="presets" aria-label="Starter experiments"></nav><div class="sidebar-foot"><div class="mini-label">EXECUTION POLICY</div><p>One run at a time<br>Numeric captures only<br>128 MiB per capture</p><span class="outline-badge">OFFLINE SESSIONS ONLY</span></div></aside>
-<section class="workspace"><div class="workspace-heading"><div><div class="eyebrow">EXPERIMENT DESIGN</div><h2 id="title">Throttle step response</h2></div><label class="backend-label">Measurement source<select id="backend"><option value="demo">Synthetic demo</option><option value="native" disabled>Native Rocket League</option></select></label></div>
-<div class="notice" id="source-notice"><span class="notice-icon">i</span><div><strong>Synthetic demo session</strong><p>Verifies the toolkit and charts. These signals are generated fixtures, not Rocket League measurements.</p></div></div>
-<div class="editor-grid"><section class="panel design"><div class="panel-header"><h3>01 <span>Input schedule</span></h3><div class="tabs"><button id="simple-tab" class="selected">Builder</button><button id="json-tab">JSON</button></div></div><div id="simple-editor"><div class="field-row"><label>Experiment name<input id="name" maxlength="120"></label></div><div class="field-row thirds"><label>Total candidate steps<input id="duration" type="number" min="1" max="7200" value="360"></label><label>Preparation<select id="preparation"><option value="settled_floor">Settle on floor</option><option value="fixed_pose_then_settle">Fixed pose + settle</option></select></label></div><div class="timeline-label"><span>Actor 0 / segment 1</span><span id="timeline-range">60 → 300</span></div><div class="timeline"><div id="timeline-block"></div></div><div class="field-row thirds"><label>Start step<input id="start" type="number" min="0" value="60"></label><label>Hold steps<input id="hold" type="number" min="1" value="240"></label><label>Car index<input id="actor" type="number" min="0" max="63" value="0"></label></div><div class="controls-heading">CONTROLS <span>−1.0 … +1.0</span></div><div class="axes" id="axes"></div><div class="buttons" id="buttons"></div><p class="builder-note">The builder edits one segment. Use JSON for additional segments, cars and policies. Steps refer to observed engine frames; solver timing is unqualified.</p></div><div id="json-editor" hidden><label for="json">Experiment definition</label><textarea id="json" spellcheck="false" aria-label="Experiment JSON"></textarea><p class="builder-note">Versioned schema, neutral gaps, bounded values. Overlapping segments are rejected.</p></div><div class="actions"><button id="validate" class="secondary">Validate</button><button id="run" class="primary">▶ Run experiment</button></div><div id="feedback" role="status" aria-live="polite"></div></section>
-<section class="panel runs"><div class="panel-header"><h3>02 <span>Run history</span></h3><span class="mini-label" id="job-count">0 RUNS</span></div><div id="jobs"><p class="empty">No experiments yet.<br>Your first run starts here.</p></div><div class="runs-bottom"><span class="dot small"></span><span id="capability">Native instrument not configured</span></div></section></div>
-<section class="panel results"><div class="panel-header"><h3>03 <span id="observation-title">Observation viewer</span></h3><div class="result-actions"><span id="result-source" class="outline-badge">NO CAPTURE SELECTED</span><a id="download" hidden>Download raw NNI2 ↓</a></div></div><div class="metrics"><div><span>RECORDS</span><strong id="records">—</strong></div><div><span>STREAM INTEGRITY</span><strong id="integrity">—</strong></div><div><span>TIMING QUALIFICATION</span><strong class="amber">Unqualified</strong></div><div><span>HIDDEN-STATE RESTORE</span><strong class="amber">Unqualified</strong></div></div><div class="plot-grid"><div><div class="chart-heading"><h4>Body & camera position</h4><span>UU · observed frame</span></div><canvas id="position-chart" width="700" height="220" aria-label="Body and camera position plot"></canvas><div class="legend"><span class="cyan">● Body X</span><span class="violet">● Camera X</span><span class="gold">● Body Z</span></div></div><div><div class="chart-heading"><h4>Authored inputs</h4><span>normalized · observed frame</span></div><canvas id="input-chart" width="600" height="220" aria-label="Authored throttle and steering plot"></canvas><div class="legend"><span class="cyan">● Throttle</span><span class="gold">● Steering</span></div></div></div><p class="viewer-note" id="viewer-note">Select a completed run to inspect its observations. Charts use a decimated preview; export raw data for analysis.</p></section><footer>RocketLaboratory <span>Original research tooling · No game assets included · No parity claims</span><a href="https://github.com/dougwhite/RocketLaboratory" target="_blank" rel="noreferrer">Documentation ↗</a></footer></section></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RocketLaboratory · Experiment console</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="RocketLaboratory home"
+        ><span class="mark">R<span>ₗ</span></span
+        ><span
+          >Rocket<span class="brand-light">Laboratory</span
+          ><small>OFFLINE PHYSICS INVESTIGATION</small></span
+        ></a
+      >
+      <div class="header-state">
+        <span class="dot"></span><span id="instrument">Connecting</span
+        ><span class="version">v0.1</span>
+      </div>
+    </header>
+    <main>
+      <aside class="sidebar">
+        <div class="eyebrow">WORKSPACE / 01</div>
+        <h1>Experiment console</h1>
+        <p class="muted">
+          Isolate an input. Observe the response. Keep the evidence.
+        </p>
+        <div class="nav-heading">STARTER EXPERIMENTS</div>
+        <nav id="presets" aria-label="Starter experiments"></nav>
+        <div class="sidebar-foot">
+          <div class="mini-label">EXECUTION POLICY</div>
+          <p>
+            One run at a time<br />Numeric captures only<br />128 MiB per
+            capture
+          </p>
+          <span class="outline-badge">OFFLINE SESSIONS ONLY</span>
+        </div>
+      </aside>
+      <section class="workspace">
+        <div class="workspace-heading">
+          <div>
+            <div class="eyebrow">EXPERIMENT DESIGN</div>
+            <h2 id="title">Throttle step response</h2>
+          </div>
+          <label class="backend-label"
+            >Measurement source<select id="backend">
+              <option value="demo">Synthetic demo</option>
+              <option value="native" disabled>Native Rocket League</option>
+            </select></label
+          >
+        </div>
+        <div class="notice" id="source-notice">
+          <span class="notice-icon">i</span>
+          <div>
+            <strong>Synthetic demo session</strong>
+            <p>
+              Verifies the toolkit and charts. These signals are generated
+              fixtures, not Rocket League measurements.
+            </p>
+          </div>
+        </div>
+        <div class="editor-grid">
+          <section class="panel design">
+            <div class="panel-header">
+              <h3>01 <span>Input schedule</span></h3>
+              <div class="tabs">
+                <button id="simple-tab" class="selected">Builder</button
+                ><button id="json-tab">JSON</button>
+              </div>
+            </div>
+            <div id="simple-editor">
+              <div class="field-row">
+                <label
+                  >Experiment name<input id="name" maxlength="120"
+                /></label>
+              </div>
+              <div class="field-row thirds">
+                <label
+                  >Total candidate steps<input
+                    id="duration"
+                    type="number"
+                    min="1"
+                    max="7200"
+                    value="360" /></label
+                ><label
+                  >Preparation<select id="preparation">
+                    <option value="settled_floor">Settle on floor</option>
+                    <option value="fixed_pose_then_settle">
+                      Fixed pose + settle
+                    </option>
+                  </select></label
+                >
+              </div>
+              <div class="timeline-label">
+                <span>Actor 0 / segment 1</span
+                ><span id="timeline-range">60 → 300</span>
+              </div>
+              <div class="timeline"><div id="timeline-block"></div></div>
+              <div class="field-row thirds">
+                <label
+                  >Start step<input
+                    id="start"
+                    type="number"
+                    min="0"
+                    value="60" /></label
+                ><label
+                  >Hold steps<input
+                    id="hold"
+                    type="number"
+                    min="1"
+                    value="240" /></label
+                ><label
+                  >Car index<input
+                    id="actor"
+                    type="number"
+                    min="0"
+                    max="63"
+                    value="0"
+                /></label>
+              </div>
+              <div class="controls-heading">
+                CONTROLS <span>−1.0 … +1.0</span>
+              </div>
+              <div class="axes" id="axes"></div>
+              <div class="buttons" id="buttons"></div>
+              <p class="builder-note">
+                The builder edits one segment. Use JSON for additional segments,
+                cars and policies. Steps refer to observed engine frames; solver
+                timing is unqualified.
+              </p>
+            </div>
+            <div id="json-editor" hidden>
+              <label for="json">Experiment definition</label
+              ><textarea
+                id="json"
+                spellcheck="false"
+                aria-label="Experiment JSON"
+              ></textarea>
+              <p class="builder-note">
+                Versioned schema, neutral gaps, bounded values. Overlapping
+                segments are rejected.
+              </p>
+            </div>
+            <div class="actions">
+              <button id="validate" class="secondary">Validate</button
+              ><button id="run" class="primary">▶ Run experiment</button>
+            </div>
+            <div id="feedback" role="status" aria-live="polite"></div>
+          </section>
+          <section class="panel runs">
+            <div class="panel-header">
+              <h3>02 <span>Run history</span></h3>
+              <span class="mini-label" id="job-count">0 RUNS</span>
+            </div>
+            <div id="jobs">
+              <p class="empty">
+                No experiments yet.<br />Your first run starts here.
+              </p>
+            </div>
+            <div class="runs-bottom">
+              <span class="dot small"></span
+              ><span id="capability">Native instrument not configured</span>
+            </div>
+          </section>
+        </div>
+        <section class="panel results">
+          <div class="panel-header">
+            <h3>03 <span id="observation-title">Observation viewer</span></h3>
+            <div class="result-actions">
+              <span id="result-source" class="outline-badge"
+                >NO CAPTURE SELECTED</span
+              ><a id="download" hidden>Download raw NNI2 ↓</a>
+            </div>
+          </div>
+          <div class="metrics">
+            <div><span>RECORDS</span><strong id="records">—</strong></div>
+            <div>
+              <span>STREAM INTEGRITY</span><strong id="integrity">—</strong>
+            </div>
+            <div>
+              <span>TIMING QUALIFICATION</span
+              ><strong class="amber">Unqualified</strong>
+            </div>
+            <div>
+              <span>HIDDEN-STATE RESTORE</span
+              ><strong class="amber">Unqualified</strong>
+            </div>
+          </div>
+          <div class="plot-grid">
+            <div>
+              <div class="chart-heading">
+                <h4>Body & camera position</h4>
+                <span>UU · observed frame</span>
+              </div>
+              <canvas
+                id="position-chart"
+                width="700"
+                height="220"
+                aria-label="Body and camera position plot"
+              ></canvas>
+              <div class="legend">
+                <span class="cyan">● Body X</span
+                ><span class="violet">● Camera X</span
+                ><span class="gold">● Body Z</span>
+              </div>
+            </div>
+            <div>
+              <div class="chart-heading">
+                <h4>Authored inputs</h4>
+                <span>normalized · observed frame</span>
+              </div>
+              <canvas
+                id="input-chart"
+                width="600"
+                height="220"
+                aria-label="Authored throttle and steering plot"
+              ></canvas>
+              <div class="legend">
+                <span class="cyan">● Throttle</span
+                ><span class="gold">● Steering</span>
+              </div>
+            </div>
+          </div>
+          <p class="viewer-note" id="viewer-note">
+            Select a completed run to inspect its observations. Charts use a
+            decimated preview; export raw data for analysis.
+          </p>
+        </section>
+        <footer>
+          RocketLaboratory
+          <span
+            >Original research tooling · No game assets included · No parity
+            claims</span
+          ><a
+            href="https://github.com/dougwhite/RocketLaboratory"
+            target="_blank"
+            rel="noreferrer"
+            >Documentation ↗</a
+          >
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
