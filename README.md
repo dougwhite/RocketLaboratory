@@ -65,7 +65,7 @@ The native backend attaches to **one already-running offline session** with the 
 
 Native attachment is opt-in. A session expires after at most five minutes. Reloading is required after rearming. Existing captures are never interrupted by a new experiment. The instrument enforces its own offline gate and watchdog in addition to host-side limits.
 
-Read [installation and platform support](docs/INSTALLATION.md), [native protocol](docs/NATIVE.md), and [licensing boundaries](THIRD_PARTY.md) before native use. Native setup remains sensitive to Rocket League/BakkesMod versions; v0.1 packaging tests are not a fresh game compatibility certification. The standalone DLL was built with MSVC and the 65 Python tests plus portable C++ checks passed on Linux and Windows; see [validation evidence](docs/VALIDATION.json). No native game pilot was run for this extraction.
+Read [installation and platform support](docs/INSTALLATION.md), [native protocol](docs/NATIVE.md), and [licensing boundaries](THIRD_PARTY.md) before native use. Native setup remains sensitive to Rocket League/BakkesMod versions; v0.1 packaging tests are not a fresh game compatibility certification. The standalone DLL was built with MSVC and the 69 Python tests plus portable C++ checks passed on Linux and Windows; see [validation evidence](docs/VALIDATION.json). No native game pilot was run for this extraction.
 
 ## MCP
 

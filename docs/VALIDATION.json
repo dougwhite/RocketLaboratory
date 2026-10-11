@@ -48,10 +48,10 @@
     "Pinned BakkesMod SDK archive fetched, checksum verified, safely extracted and cache tree rechecked",
     "Pinned RLBot Python source archive fetched, checksum verified and safely extracted"
   ],
-  "ci_baseline": {
-    "run_url": "https://github.com/dougwhite/RocketLaboratory/actions/runs/38117701129",
-    "commit": "b8685a64f090f1b183c1d6c74ded6adf1e29dbcd",
-    "python_tests_passed": 66,
+  "continuous_integration": {
+    "run_url": "https://github.com/dougwhite/RocketLaboratory/actions/runs/38118136766",
+    "commit": "b415e47cd16c51e58169706c96640dacf1685b49",
+    "python_tests_passed": 69,
     "platforms": [
       "Linux Python 3.12",
       "Linux Python 3.14",
@@ -59,6 +59,8 @@
       "Windows Python 3.14"
     ],
     "portable_cpp_passed": true,
-    "note": "Baseline CI before final ownership and preview-budget hardening. Native game qualification is separate."
-  }
+    "note": "All toolkit tests passed after final ownership/preview hardening. Windows native-build-host Python count above records the earlier compiler session; native game qualification remains separate."
+  },
+  "installed_mcp_stdio_subprocess_passed": true,
+  "source_distribution_audit_passed": true
 }
