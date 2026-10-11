@@ -1,0 +1,81 @@
+{
+  "schema": "rocketlaboratory.extraction.v1",
+  "files": [
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/stream.py",
+      "destination": "src/rocketlaboratory/instrument/stream.py",
+      "source_sha256": "23af7e8477cad3a96693c5142cbd31405682d533b46b8bba01c330b1b2c6e684",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/tape.py",
+      "destination": "src/rocketlaboratory/instrument/tape.py",
+      "source_sha256": "49551385cadf8f06a82cdbbf0b0af27b65643bc30512fb3bd232a4c3e057acc9",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/qualify.py",
+      "destination": "src/rocketlaboratory/instrument/qualify.py",
+      "source_sha256": "f022396080a9aa51d778a51a51c398052be6fc95ed3d6c3a1d9d9a463b1b973c",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/native_coordinates.py",
+      "destination": "src/rocketlaboratory/instrument/native_coordinates.py",
+      "source_sha256": "98506d0cea999da64f1811699d785caaea973ba18bc442b903b3e150255a8262",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/core.hpp",
+      "destination": "native/core.hpp",
+      "source_sha256": "dc5ee7a5cdec47407cddf26b97f1f4899b63e1cbda4cab30eea41b5a9cbd9821",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/core_tests.cpp",
+      "destination": "native/core_tests.cpp",
+      "source_sha256": "151ba5d5aa50dd23d5d0c779ae07773a20a8716a9825d1ddafe6c7fb0b077ac9",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/plugin.cpp",
+      "destination": "native/plugin.cpp",
+      "source_sha256": "a8b384563d49021b67f43a217698935c21a5823221fd43bbe2376fcfc2299a8b",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/CMakeLists.txt",
+      "destination": "native/CMakeLists.txt",
+      "source_sha256": "fe0acaefa55a39052b56de5fb7b8dd94bf232e4ff1c77a025ab01feff4909927",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/test_stream.py",
+      "destination": "tests/test_stream.py",
+      "source_sha256": "47db8d8407e0aaf3eb767ab7e492324321a7b48ab7ecd94b53bf0d06e94d7f20",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/test_tape.py",
+      "destination": "tests/test_tape.py",
+      "source_sha256": "8a446b06b1d20a43702e77fa26dead33c23289a7fc4c342901b3f897a1529a32",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/test_qualify.py",
+      "destination": "tests/test_qualify.py",
+      "source_sha256": "985838f49e81bcc41aaab1365803c6cfe005cdfb6df4d70dad40a36730d78f24",
+      "license": "MIT; original contributor notice retained in LICENSE"
+    },
+    {
+      "source": "NinjaBladeNoodle/tools/instrument/test_native_coordinates.py",
+      "destination": "tests/test_native_coordinates.py",
+      "source_sha256": "5ba7c30d7431650a4a244f7b458354bbe4934cbc7f81e585fffccef7dd5cb9ba",
+      "license": "MIT; existing-game Euler converter check excluded; independent Hamilton-product tests retained"
+    }
+  ],
+  "excluded": [
+    "Private recordings, profiles, telemetry, compiled DLLs, assets and dependency trees",
+    "NinjaBladeNoodle simulation, gameplay and measured vehicle presets"
+  ]
+}

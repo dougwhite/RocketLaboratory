@@ -1,0 +1,23 @@
+{
+  "schema": "rocketlaboratory.dependencies.v1",
+  "dependencies": {
+    "bakkesmod-sdk": {
+      "repository": "https://github.com/bakkesmodorg/BakkesModSDK",
+      "revision": "479e8f571cf554b25f4eeb64d611dec4133edcaf",
+      "url": "https://codeload.github.com/bakkesmodorg/BakkesModSDK/zip/479e8f571cf554b25f4eeb64d611dec4133edcaf",
+      "sha256": "398e63e630c650924d76fd38bb916a5fa8e2d4e19abc7c3c13b83a0b99896125",
+      "max_bytes": 33554432,
+      "license": "No standalone repository LICENSE found; SDK README documents plugin development",
+      "purpose": "External SDK required for MSVC plugin compilation"
+    },
+    "rlbot-python-source": {
+      "repository": "https://github.com/RLBot/python-interface",
+      "revision": "8a0850f20ff647d933566fb31cf060d87ab5ec35",
+      "url": "https://codeload.github.com/RLBot/python-interface/zip/8a0850f20ff647d933566fb31cf060d87ab5ec35",
+      "sha256": "0749ab260e22e9900dbead7e8874084d8832de7bcd38acb5aeea59b74e43efd1",
+      "max_bytes": 33554432,
+      "license": "MIT",
+      "purpose": "Optional RLBot source integration; not used by the v0.1 native backend"
+    }
+  }
+}

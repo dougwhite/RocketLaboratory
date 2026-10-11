@@ -1,0 +1,31 @@
+{
+  "schema": "rocketlaboratory.experiment.v1",
+  "name": "Boost pulse after acceleration",
+  "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+  "duration_steps": 360,
+  "preparation": "settled_floor",
+  "actors": [
+    {
+      "car_index": 0,
+      "segments": [
+        {
+          "start_step": 0,
+          "duration_steps": 120,
+          "controls": {
+            "throttle": 1
+          }
+        },
+        {
+          "start_step": 120,
+          "duration_steps": 120,
+          "controls": {
+            "throttle": 1,
+            "activate_boost": true,
+            "holding_boost": true
+          }
+        }
+      ]
+    }
+  ],
+  "motion_policy": "planar"
+}

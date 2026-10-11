@@ -1,0 +1,7 @@
+include README.md LICENSE THIRD_PARTY.md AGENTS.md CONTRIBUTING.md SECURITY.md CHANGELOG.md
+recursive-include src/rocketlaboratory *.py *.json *.html *.css *.js
+recursive-include native *.cpp *.hpp CMakeLists.txt
+recursive-include docs *.md *.json *.png
+recursive-include examples *.json
+recursive-include scripts *.py *.ps1
+recursive-include tests *.py

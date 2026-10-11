@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rocketlaboratory"
+version = "0.1.0"
+description = "Offline Rocket League experiment toolkit: web editor, CLI, MCP and native telemetry"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY.md"]
+authors = [{name = "RocketLaboratory contributors"}]
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent"]
+
+[project.scripts]
+rocketlab = "rocketlaboratory.cli:main"
+
+[project.urls]
+Repository = "https://github.com/dougwhite/RocketLaboratory"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rocketlaboratory = ["web/*", "dependency-lock.json", "presets.json", "experiment.schema.json"]

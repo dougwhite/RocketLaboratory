@@ -1,0 +1,47 @@
+{
+  "schema": "rocketlaboratory.campaign.v1",
+  "cases": [
+    {
+      "experiment": {
+        "schema": "rocketlaboratory.experiment.v1",
+        "name": "Throttle step response",
+        "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+        "duration_steps": 360,
+        "preparation": "settled_floor",
+        "actors": [
+          {
+            "car_index": 0,
+            "segments": [
+              {
+                "start_step": 60,
+                "duration_steps": 240,
+                "controls": {
+                  "throttle": 1
+                }
+              }
+            ]
+          }
+        ],
+        "motion_policy": "planar"
+      },
+      "repeat": 3
+    },
+    {
+      "experiment": {
+        "schema": "rocketlaboratory.experiment.v1",
+        "name": "Neutral baseline",
+        "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+        "duration_steps": 240,
+        "preparation": "settled_floor",
+        "actors": [
+          {
+            "car_index": 0,
+            "segments": []
+          }
+        ],
+        "motion_policy": "neutral_baseline"
+      },
+      "repeat": 3
+    }
+  ]
+}

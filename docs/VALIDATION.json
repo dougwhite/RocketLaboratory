@@ -1,0 +1,47 @@
+{
+  "schema": "rocketlaboratory.validation.v1",
+  "version": "0.1.0",
+  "date": "2026-10-11",
+  "python_tests": {
+    "linux": {
+      "version": "3.14.7",
+      "passed": 66
+    },
+    "windows": {
+      "version": "3.14",
+      "passed": 65
+    }
+  },
+  "portable_cpp": {
+    "linux_ctest_passed": true,
+    "windows_ctest_passed": true
+  },
+  "native_build": {
+    "compiler": "MSVC 19.50.35730.0 x64",
+    "windows_sdk": "10.0.26100.0",
+    "bakkesmod_sdk_revision": "479e8f571cf554b25f4eeb64d611dec4133edcaf",
+    "dll_bytes": 215040,
+    "dll_sha256": "1979b12a697e7e117b72a7d4d0c58a4ba7587151f0a3d86d42f7b5335396afda",
+    "distributed": false,
+    "source_sha256": {
+      "core.hpp": "dc5ee7a5cdec47407cddf26b97f1f4899b63e1cbda4cab30eea41b5a9cbd9821",
+      "core_tests.cpp": "151ba5d5aa50dd23d5d0c779ae07773a20a8716a9825d1ddafe6c7fb0b077ac9",
+      "plugin.cpp": "688b347869c07f57aeef8088a9be9a20caf6c5bd25b3ebfb78baaf88441515e4",
+      "CMakeLists.txt": "f02d2befc26579fb8605b89a383c6c30b95d0635f7877dcb8dcafcd8423011f9"
+    }
+  },
+  "browser_acceptance": [
+    "edit and validate an experiment",
+    "reject malformed JSON schema visibly",
+    "run synthetic throttle and multi-segment powerslide fixtures",
+    "inspect completed charts and raw capture link"
+  ],
+  "native_game_launched": false,
+  "native_runtime_qualified": false,
+  "solver_timing_qualified": false,
+  "hidden_state_restore_qualified": false,
+  "exact_parity_claimed": false,
+  "standalone_wheel_install_passed": true,
+  "cli_campaign_completed_runs": 6,
+  "wheel_contains_private_data_or_external_binaries": false
+}

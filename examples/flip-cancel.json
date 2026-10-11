@@ -1,0 +1,38 @@
+{
+  "schema": "rocketlaboratory.experiment.v1",
+  "name": "Backflip then opposing pitch (delivery diagnostic)",
+  "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+  "duration_steps": 240,
+  "preparation": "settled_floor",
+  "actors": [
+    {
+      "car_index": 0,
+      "segments": [
+        {
+          "start_step": 30,
+          "duration_steps": 12,
+          "controls": {
+            "jump": true
+          }
+        },
+        {
+          "start_step": 48,
+          "duration_steps": 1,
+          "controls": {
+            "jump": true,
+            "pitch": 1,
+            "dodge_forward": -1
+          }
+        },
+        {
+          "start_step": 49,
+          "duration_steps": 60,
+          "controls": {
+            "pitch": -1
+          }
+        }
+      ]
+    }
+  ],
+  "motion_policy": "vertical"
+}

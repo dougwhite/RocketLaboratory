@@ -1,0 +1,14 @@
+{
+  "schema": "rocketlaboratory.experiment.v1",
+  "name": "Neutral baseline",
+  "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+  "duration_steps": 240,
+  "preparation": "settled_floor",
+  "actors": [
+    {
+      "car_index": 0,
+      "segments": []
+    }
+  ],
+  "motion_policy": "neutral_baseline"
+}

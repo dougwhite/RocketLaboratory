@@ -1,0 +1,202 @@
+{
+  "throttle-step": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Throttle step response",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 360,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": [
+          {
+            "start_step": 60,
+            "duration_steps": 240,
+            "controls": {
+              "throttle": 1
+            }
+          }
+        ]
+      }
+    ],
+    "motion_policy": "planar"
+  },
+  "boost-pulse": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Boost pulse after acceleration",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 360,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": [
+          {
+            "start_step": 0,
+            "duration_steps": 120,
+            "controls": {
+              "throttle": 1
+            }
+          },
+          {
+            "start_step": 120,
+            "duration_steps": 120,
+            "controls": {
+              "throttle": 1,
+              "activate_boost": true,
+              "holding_boost": true
+            }
+          }
+        ]
+      }
+    ],
+    "motion_policy": "planar"
+  },
+  "jump-hold": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Jump hold and release",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 240,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": [
+          {
+            "start_step": 60,
+            "duration_steps": 24,
+            "controls": {
+              "jump": true
+            }
+          }
+        ]
+      }
+    ],
+    "motion_policy": "vertical"
+  },
+  "flip-cancel": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Backflip then opposing pitch (delivery diagnostic)",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 240,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": [
+          {
+            "start_step": 30,
+            "duration_steps": 12,
+            "controls": {
+              "jump": true
+            }
+          },
+          {
+            "start_step": 48,
+            "duration_steps": 1,
+            "controls": {
+              "jump": true,
+              "pitch": 1,
+              "dodge_forward": -1
+            }
+          },
+          {
+            "start_step": 49,
+            "duration_steps": 60,
+            "controls": {
+              "pitch": -1
+            }
+          }
+        ]
+      }
+    ],
+    "motion_policy": "vertical"
+  },
+  "powerslide": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Steering with and without handbrake",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 360,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": [
+          {
+            "start_step": 0,
+            "duration_steps": 120,
+            "controls": {
+              "throttle": 1
+            }
+          },
+          {
+            "start_step": 120,
+            "duration_steps": 90,
+            "controls": {
+              "throttle": 1,
+              "steer": 0.75
+            }
+          },
+          {
+            "start_step": 210,
+            "duration_steps": 90,
+            "controls": {
+              "throttle": 1,
+              "steer": 0.75,
+              "handbrake": true
+            }
+          }
+        ]
+      }
+    ],
+    "motion_policy": "planar"
+  },
+  "neutral": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Neutral baseline",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 240,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": []
+      }
+    ],
+    "motion_policy": "neutral_baseline"
+  },
+  "two-car-inputs": {
+    "schema": "rocketlaboratory.experiment.v1",
+    "name": "Independent two-car inputs",
+    "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+    "duration_steps": 240,
+    "preparation": "settled_floor",
+    "actors": [
+      {
+        "car_index": 0,
+        "segments": [
+          {
+            "start_step": 30,
+            "duration_steps": 120,
+            "controls": {
+              "throttle": 1
+            }
+          }
+        ]
+      },
+      {
+        "car_index": 1,
+        "segments": [
+          {
+            "start_step": 60,
+            "duration_steps": 120,
+            "controls": {
+              "throttle": -0.5
+            }
+          }
+        ]
+      }
+    ],
+    "motion_policy": "planar"
+  }
+}

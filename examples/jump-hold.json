@@ -1,0 +1,22 @@
+{
+  "schema": "rocketlaboratory.experiment.v1",
+  "name": "Jump hold and release",
+  "description": "Offline hook investigation. Native timing and hidden-state restore remain unqualified. Demo mode is synthetic.",
+  "duration_steps": 240,
+  "preparation": "settled_floor",
+  "actors": [
+    {
+      "car_index": 0,
+      "segments": [
+        {
+          "start_step": 60,
+          "duration_steps": 24,
+          "controls": {
+            "jump": true
+          }
+        }
+      ]
+    }
+  ],
+  "motion_policy": "vertical"
+}
